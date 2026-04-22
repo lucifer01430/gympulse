@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance - Armour Fitness Club</title>
+    <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="AFC" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <script>
+        (function () {
+            try {
+                const raw = localStorage.getItem("gympulse_db");
+                const parsed = raw ? JSON.parse(raw) : null;
+                const theme = parsed && parsed.settings && parsed.settings.theme ? parsed.settings.theme : "dark";
+                document.documentElement.setAttribute("data-theme", theme);
+                document.documentElement.setAttribute("data-bs-theme", theme);
+            } catch (error) {
+                document.documentElement.setAttribute("data-theme", "dark");
+                document.documentElement.setAttribute("data-bs-theme", "dark");
+            }
+        })();
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="attendance" data-title="Attendance" data-requires-auth="true" class="app-body">
+    <div id="page-root">
+        <section class="row g-4 mb-4" id="attendanceSummary"></section>
+
+        <section class="row g-4">
+            <div class="col-xl-7">
+                <div class="panel-card h-100">
+                    <div class="panel-head">
+                        <div>
+                            <h1>Mark Attendance</h1>
+                            <p>Record daily check-ins for active members.</p>
+                        </div>
+                    </div>
+                    <div class="member-grid" id="attendanceMemberGrid"></div>
+                </div>
+            </div>
+            <div class="col-xl-5">
+                <div class="panel-card h-100">
+                    <div class="panel-head">
+                        <div>
+                            <h3>Today's Attendance</h3>
+                            <p>Live list of members checked in today.</p>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-theme align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Member</th>
+                                    <th>Plan</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="todayAttendanceTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="panel-card">
+                    <div class="panel-head">
+                        <div>
+                            <h3>Attendance History</h3>
+                            <p>Review check-ins by date and member.</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <input type="date" id="attendanceHistoryDate" class="form-control">
+                            <button type="button" id="clearAttendanceFilter" class="btn btn-outline-light">Clear</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-theme align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Member</th>
+                                    <th>Plan</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendanceHistoryTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/plans.js"></script>
+    <script src="assets/js/members.js"></script>
+    <script src="assets/js/attendance.js"></script>
+    <script src="assets/js/payments.js"></script>
+    <script src="assets/js/invoices.js"></script>
+    <script src="assets/js/reports.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
